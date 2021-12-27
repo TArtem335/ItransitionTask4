@@ -7,13 +7,13 @@ class FairPlay {
         this.sComputerChoiceKey = this.generateComputerChoiseKey();
     }
     generateComputerChoiseKey() {
-        let sComputerChoiceKey = secureRandom(16, {type: 'Buffer'}).join("").toUpperCase();
+        let sComputerChoiceKey = secureRandom(16, {type: 'Buffer'}).join("");
         return sComputerChoiceKey;
     }
     generateComputerChoiseKeyHMAC() {
         const sHash = new SHA3(256);
         sHash.update(this.sComputerChoiceKey + this.sComputerChoice);
-        let sHashResult = sHash.digest('hex');
+        let sHashResult = sHash.digest('hex').toUpperCase();
         return sHashResult;
     }
 }

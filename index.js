@@ -20,7 +20,6 @@ async function main() {
 			oFairPlay.generateComputerChoiseKeyHMAC()
 		);
 		do {
-			// if (sUserMenuChoise !== "") console.log(oTexts.MessageErrorIncorrectUserInput);
 			sUserMenuChoise = await getUserGameChoise();
 			if (sUserMenuChoise === "?") {
 				oHelp.printHelpTable(aGameOptions);
@@ -28,7 +27,6 @@ async function main() {
 			}
 		} while (!(sUserMenuChoise >= 0 && sUserMenuChoise <= aGameOptions.length || sUserMenuChoise === "?") || sUserMenuChoise === "")
 		if (sUserMenuChoise === "0") return 0;
-		// if (sUserMenuChoise !== "") console.clear();
 		let sUserGameChoice = aGameOptions[sUserMenuChoise - 1];
 		console.log(oTexts.MessageYourGameOption + oTexts.TextColon, sUserGameChoice);
 		console.log(oTexts.MessageComputerGameOption + oTexts.TextColon, sComputerChoice);
