@@ -2,12 +2,18 @@ const oTexts = require("./texts.js")
 
 class GameResult {
     aGameResults = [
+        oTexts.Draw,
+        oTexts.Lose,
+        oTexts.Win
+    ];
+
+    aGameResultMessages = [
         oTexts.MessageDraw,
         oTexts.MessageLose,
         oTexts.MessageWin
     ];
 
-    getGameResult(sUserGameChoice, sComputerChoice, aGameOptions) {
+    getGameResultIndex(sUserGameChoice, sComputerChoice, aGameOptions) {
         let iUserChoiseIndex = aGameOptions.indexOf(sUserGameChoice),
             iComputerChoiseIndex = aGameOptions.indexOf(sComputerChoice),
             iIndexesDifference = iComputerChoiseIndex - iUserChoiseIndex;
@@ -17,7 +23,15 @@ class GameResult {
         while (iIndexesDifference > 2) {
             iIndexesDifference -= 2;
         }
-        return this.aGameResults[iIndexesDifference];
+        return iIndexesDifference;
+    }
+
+    getGameResult(sUserGameChoice, sComputerChoice, aGameOptions) {
+        return this.aGameResults[this.getGameResultIndex(sUserGameChoice, sComputerChoice, aGameOptions)];
+    }
+
+    getGameResultMessage(sUserGameChoice, sComputerChoice, aGameOptions) {
+        return this.aGameResultMessages[this.getGameResultIndex(sUserGameChoice, sComputerChoice, aGameOptions)];
     }
 }
 

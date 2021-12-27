@@ -2,6 +2,7 @@ const readline = require("readline");
 const oTexts = require("./texts.js");
 const oGameResult = require("./gameResult.js");
 const oError = require("./error.js");
+const oHelp = require("./help.js");
 const FairPlay = require("./fairPlay.js"); 
 
 main();
@@ -21,13 +22,17 @@ async function main() {
 		do {
 			// if (sUserMenuChoise !== "") console.log(oTexts.MessageErrorIncorrectUserInput);
 			sUserMenuChoise = await getUserGameChoise();
-		} while (!(sUserMenuChoise >= 0 && sUserMenuChoise <= aGameOptions.length || sUserMenuChoise === "?"))
+			if (sUserMenuChoise === "?") {
+				oHelp.printHelpTable(aGameOptions);
+				sUserMenuChoise = "";
+			}
+		} while (!(sUserMenuChoise >= 0 && sUserMenuChoise <= aGameOptions.length || sUserMenuChoise === "?") || sUserMenuChoise === "")
 		if (sUserMenuChoise === "0") return 0;
 		// if (sUserMenuChoise !== "") console.clear();
 		let sUserGameChoice = aGameOptions[sUserMenuChoise - 1];
 		console.log(oTexts.MessageYourGameOption + oTexts.TextColon, sUserGameChoice);
 		console.log(oTexts.MessageComputerGameOption + oTexts.TextColon, sComputerChoice);
-		let sGameResult = oGameResult.getGameResult(sUserGameChoice, sComputerChoice, aGameOptions);
+		let sGameResult = oGameResult.getGameResultMessage(sUserGameChoice, sComputerChoice, aGameOptions);
 		console.log(oTexts.MessageGameResult + oTexts.TextColon, sGameResult);
 		console.log(oTexts.MessageComputerChoiseHMACKey + oTexts.TextColon, oFairPlay.sComputerChoiceKey);
 	}
