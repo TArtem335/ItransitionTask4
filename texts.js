@@ -1,4 +1,5 @@
 const oTexts = {
+	GamesSeparator: "--------------------------------------------",
 	MessageChooseOption: "Choose game option",
 	MessageGameOptions: "Game options",
     MessageYourGameOption: "Your choise",
@@ -7,6 +8,8 @@ const oTexts = {
 	TextColon: ":",
 	MessageHelp: "Help",
 	MessageExit: "Exit",
+	MessageComputerChoiseHMAC: "HMAC",
+	MessageComputerChoiseHMACKey: "HMAC Key",
 	MessageDraw: "It's a draw.",
     MessageLose: "You lose.",
 	MessageWin: "You win.",
